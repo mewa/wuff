@@ -1,9 +1,11 @@
 package main
 
 import (
+	"github.com/mewa/wuff/config"
+	"github.com/mewa/wuff/watch"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	"github.com/mewa/wuff/config"
+	"runtime"
 )
 
 var conf config.Config
@@ -29,11 +31,17 @@ func main() {
 	log.Info("Loaded config")
 	for _, service := range conf.Service {
 		log.WithFields(log.Fields{
-			"name": service.Name,
+			"name":        service.Name,
 			"checkPeriod": service.CheckPeriod,
-			"retries": service.Retries,
+			"retries":     service.Retries,
 			"retryPeriod": service.RetryPeriod,
-			"check": service.Check,
+			"check":       service.Check,
 		}).Infof("Loaded service: %s", service.Name)
+
+		go watch.Serve(service, conf)
+	}
+
+	for {
+		runtime.Gosched()
 	}
 }
