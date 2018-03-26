@@ -21,6 +21,8 @@ type Service struct {
 
 type Smtp struct {
 	Server   string
+	Sender   string
+	Port     int
 	User     string
 	Password string
 }
