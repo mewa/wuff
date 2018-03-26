@@ -12,6 +12,7 @@ var conf config.Config
 
 func main() {
 	viper.SetConfigName("config")
+	viper.AddConfigPath("$HOME/.wuff")
 	viper.AddConfigPath(".")
 
 	viper.SetConfigType("hcl")
