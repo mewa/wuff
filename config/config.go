@@ -17,6 +17,7 @@ type Service struct {
 	RetryPeriod int
 	CheckPeriod int
 	Check       string
+	Start       string
 }
 
 type Smtp struct {
@@ -78,11 +79,19 @@ func (smtp *Smtp) Verify() error {
 		return fmt.Errorf("SMTP server password not provided")
 	}
 
+	if smtp.Port == 0 {
+		smtp.Port = 587
+	}
+
 	return nil
 }
 
 func (s *Service) SetDefaultCheck() {
-	s.Check = "echo okx"
+	s.Check = fmt.Sprintf("service %s status", s.Name)
+}
+
+func (s *Service) SetDefaultStart() {
+	s.Start = fmt.Sprintf("service %s start", s.Name)
 }
 
 func (service *Service) Verify() error {
@@ -96,6 +105,10 @@ func (service *Service) Verify() error {
 
 	if service.Check == "" {
 		service.SetDefaultCheck()
+	}
+
+	if service.Start == "" {
+		service.SetDefaultStart()
 	}
 
 	return nil
