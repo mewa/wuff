@@ -25,6 +25,7 @@ smtp.server = "smtp.example.com" # smtp server address used
 smtp.port = 25 # smtp server port, can be omitted (defaults to 587)
 smtp.user = "user@example.com" # user used to authenticate against smtp server
 smtp.password = "examplepassword" # password used to authenticate against smtp server
+smtp.sender = "from@example.com" # sender email address
 
 # service declaration block
 # for each such block checks will be made (independently)
