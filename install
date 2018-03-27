@@ -11,4 +11,4 @@ cp scripts/exec $HOME/.wuff/exec
 echo "Create your config at ~/.wuff/config.hcl"
 
 echo You can now link wuff with the following command
-echo ln -s $HOME/.wuff/wuff /usr/bin/wuff && ln -s $HOME/.wuff/exec /usr/bin/runwuff
+echo 'ln -s $HOME/.wuff/wuff /usr/bin/wuff && ln -s $HOME/.wuff/exec /usr/bin/runwuff'
