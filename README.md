@@ -2,7 +2,7 @@
 
 1. Install Go language
 2. Run
-```
+```sh
 curl https://raw.githubusercontent.com/mewa/wuff/master/install | sh
 ```
 3. (Optional) Link executables
@@ -18,7 +18,7 @@ You should have 2 executables at your $HOME/.wuff path:
 
 An example config can be found below:
 
-```
+```hcl
 email = "notifyme@example.com" # email receiving notifications
 
 smtp.server = "smtp.example.com" # smtp server address used
